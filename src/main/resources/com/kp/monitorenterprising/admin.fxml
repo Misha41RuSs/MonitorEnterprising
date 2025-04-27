@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.kp.monitorenterprising.Controller.AdminController">
+
+    <children>
+        <Label layoutX="300.0" layoutY="20.0" text="Панель администратора">
+            <font>
+                <Font name="Times New Roman Bold" size="36.0"/>
+            </font>
+        </Label>
+
+        <TableView fx:id="ordersTable" layoutX="50.0" layoutY="80.0" prefWidth="900.0" prefHeight="350.0">
+            <columns>
+                <TableColumn fx:id="orderIdColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="userColumn" text="Пользователь" prefWidth="100"/>
+                <TableColumn fx:id="modelColumn" text="Модель" prefWidth="150"/>
+                <TableColumn fx:id="quantityColumn" text="Кол-во" prefWidth="70"/>
+                <TableColumn fx:id="dateColumn" text="Дата" prefWidth="120"/>
+                <TableColumn fx:id="totalPriceColumn" text="Сумма" prefWidth="100"/>
+                <TableColumn fx:id="statusColumn" text="Статус" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <Label layoutX="50.0" layoutY="450.0" text="Изменить статус:"/>
+        <ComboBox fx:id="statusComboBox" layoutX="160.0" layoutY="445.0" prefWidth="200.0"/>
+
+        <Button text="Изменить" layoutX="380.0" layoutY="445.0" onAction="#changeStatus" prefWidth="120.0"/>
+
+        <Button text="Выйти" layoutX="850.0" layoutY="520.0" onAction="#handleLogout" prefWidth="80.0"/>
+    </children>
+</AnchorPane>

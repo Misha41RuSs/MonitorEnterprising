@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kp.monitorenterprising.Controller.Controller">
+   <children>
+      <Label layoutX="184.0" layoutY="24.0" prefHeight="51.0" prefWidth="703.0" text="Информационная система по производству мониторов">
+         <font>
+            <Font name="Times New Roman Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="registerButton" layoutX="402.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="51.0" prefWidth="267.0" text="Зарегистрироваться">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="loginButton" layoutX="402.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="51.0" prefWidth="267.0" text="Войти">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="aboutButton" layoutX="402.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#about" prefHeight="51.0" prefWidth="267.0" text="Об авторе">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
