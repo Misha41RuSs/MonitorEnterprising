@@ -3,10 +3,15 @@ package com.kp.monitorenterprising.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class EngineerController {
 
@@ -15,34 +20,50 @@ public class EngineerController {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/com/kp/monitorenterprising/mainWindow.fxml")
         );
-        Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("Главное меню");
     }
 
     @FXML
-    void viewGost61747(ActionEvent event) {
-        navigateTo("gost61747.fxml", "ГОСТ 61747", event);
+    void goBack(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/kp/monitorenterprising/manager.fxml")
+        );
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle("Менеджер");
     }
 
     @FXML
-    void viewGost81234(ActionEvent event) {
-        navigateTo("gost81234.fxml", "ГОСТ 81234", event);
+    void openGost61747(ActionEvent event) {
+        openWebpage("https://rosgosts.ru/file/gost/31/120/gost_r_mek_61747-1-1-2015.pdf");
     }
 
     @FXML
-    void viewAwaitProduction(ActionEvent event) {
-        navigateTo("awaitProduction.fxml", "Ожидают производства", event);
+    void openGost81234(ActionEvent event) {
+        openWebpage("https://protect.gost.ru/default.aspx/document1.aspx?control=31&baseC=6&page=0&month=3&year=-1&search=&id=266028");
     }
 
-    private void navigateTo(String fxml, String title, ActionEvent event) {
+    private void openWebpage(String uri) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/kp/monitorenterprising/" + fxml)
-            );
-            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+            Desktop.getDesktop().browse(new URI(uri));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            // можно показать Alert об ошибке
+        }
+    }
+
+    /** Открывает отдельное окно со списком мониторов «В процессе работы» */
+    @FXML
+    void openProductionWindow(ActionEvent event) {
+        try {
+            URL resource = getClass().getResource("/com/kp/monitorenterprising/productionMonitors.fxml");
+            FXMLLoader loader = new FXMLLoader(resource);
+            Stage stage = new Stage();
+            stage.setTitle("Мониторы в процессе работы");
             stage.setScene(new Scene(loader.load()));
-            stage.setTitle(title);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

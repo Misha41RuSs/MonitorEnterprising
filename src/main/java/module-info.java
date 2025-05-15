@@ -4,6 +4,7 @@ module com.kp.monitorenterprising {
     requires java.sql;
     requires telegrambots;
     requires telegrambots.meta;
+    requires java.desktop;
 
     exports com.kp.monitorenterprising;
     exports com.kp.monitorenterprising.Controller;

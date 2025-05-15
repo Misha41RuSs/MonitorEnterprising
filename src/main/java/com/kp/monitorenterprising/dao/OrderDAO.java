@@ -10,6 +10,8 @@ import java.util.List;
 
 public class OrderDAO {
 
+
+
     public List<Order> getOrdersByUserId(int userId) {
         List<Order> orders = new ArrayList<>();
         String query = "SELECT o.OrderID, m.ModelName, o.Quantity, o.OrderDate, " +
@@ -179,5 +181,12 @@ public class OrderDAO {
             e.printStackTrace();
         }
         return orders;
+    }
+
+    public List<Order> getProcessingOrders() {
+        return getOrdersByStatus("В процессе работы");
+    }
+    public List<Order> getTestingOrders() {
+        return getOrdersByStatus("Тестируется");
     }
 }

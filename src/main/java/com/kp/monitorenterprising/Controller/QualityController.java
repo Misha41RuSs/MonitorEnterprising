@@ -6,7 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class QualityController {
 
@@ -44,6 +48,37 @@ public class QualityController {
             stage.setScene(new Scene(loader.load()));
             stage.setTitle(title);
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /** Открывает окно «Готовые мониторы» */
+    @FXML
+    void openReadyMonitors(ActionEvent event) {
+        try {
+            URL res = getClass().getResource("/com/kp/monitorenterprising/readyMonitors.fxml");
+            Stage st = new Stage();
+            st.setTitle("Готовые мониторы");
+            st.setScene(new Scene(FXMLLoader.load(res)));
+            st.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void openGost52745(ActionEvent event) {
+        openWebpage("https://spb.23met.ru/gost_files/gost-r-52745-2021.pdf");
+    }
+
+    @FXML
+    void openGost16504(ActionEvent event) {
+        openWebpage("https://ohranatruda.ru/upload/iblock/46b/4294851950.pdf");
+    }
+
+    private void openWebpage(String uri) {
+        try {
+            Desktop.getDesktop().browse(new URI(uri));
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }

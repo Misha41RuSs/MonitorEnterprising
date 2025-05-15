@@ -38,19 +38,19 @@
             </font>
         </Label>
 
-        <Button fx:id="gost61747Button" layoutX="336.0" layoutY="252.0" prefHeight="53.0" prefWidth="378.0" text="Посмотреть ГОСТ 61747">
+        <Button fx:id="gost61747Button" layoutX="336.0" layoutY="252.0" onAction="#openGost61747" prefHeight="53.0" prefWidth="378.0" text="Посмотреть ГОСТ 61747">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>
         </Button>
 
-        <Button fx:id="gost81234Button" layoutX="340.0" layoutY="374.0" prefHeight="53.0" prefWidth="369.0" text="Посмотреть ГОСТ 81234">
+        <Button fx:id="gost81234Button" layoutX="340.0" layoutY="374.0" onAction="#openGost81234" prefHeight="53.0" prefWidth="369.0" text="Посмотреть ГОСТ 71231">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>
         </Button>
 
-        <Button fx:id="awaitProductionButton" layoutX="340.0" layoutY="132.0" prefHeight="53.0" prefWidth="369.0" text="Ожидают производства">
+        <Button fx:id="awaitProductionButton" layoutX="340.0" layoutY="132.0" onAction="#openProductionWindow" prefHeight="53.0" prefWidth="369.0" text="Ожидают производства">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>

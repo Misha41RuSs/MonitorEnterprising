@@ -40,19 +40,19 @@
         </Label>
 
         <!-- Кнопка: готовые мониторы -->
-        <Button fx:id="readyMonitorsButton" layoutX="396.0" layoutY="122.0" prefHeight="53.0" prefWidth="317.0" text="Готовые мониторы">
+        <Button fx:id="readyMonitorsButton" layoutX="396.0" layoutY="122.0" onAction="#openReadyMonitors" prefHeight="53.0" prefWidth="317.0" text="Готовые мониторы">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>
         </Button>
 
         <!-- Кнопки по ГОСТам (первые 8 цифр) -->
-        <Button fx:id="gost1Button" layoutX="396.0" layoutY="251.0" prefHeight="53.0" prefWidth="317.0" text="ГОСТ 52745">
+        <Button fx:id="gost1Button" layoutX="396.0" layoutY="251.0" onAction="#openGost52745" prefHeight="53.0" prefWidth="317.0" text="ГОСТ 52745">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>
         </Button>
-        <Button fx:id="gost2Button" layoutX="396.0" layoutY="380.0" prefHeight="53.0" prefWidth="317.0" text="ГОСТ 16504">
+        <Button fx:id="gost2Button" layoutX="396.0" layoutY="380.0" onAction="#openGost16504" prefHeight="53.0" prefWidth="317.0" text="ГОСТ 16504">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>

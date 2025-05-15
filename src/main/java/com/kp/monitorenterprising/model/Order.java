@@ -10,6 +10,7 @@ public class Order {
     private double totalPrice;
     private String status;
     private String username;
+    private String description;
 
     // <-- добавляем это поле
     private int monitorId;
@@ -26,41 +27,19 @@ public class Order {
         this.username    = username;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
+    public int getOrderId()      { return orderId; }
+    public String getMonitorName(){ return monitorName; }
+    public int getQuantity()     { return quantity; }
+    public LocalDate getOrderDate(){ return orderDate; }
+    public double getTotalPrice(){ return totalPrice; }
+    public String getStatus()    { return status; }
+    public String getUsername()  { return username; }
 
-    public String getMonitorName() {
-        return monitorName;
-    }
+    // геттер и сеттер для monitorId
+    public int getMonitorId()    { return monitorId; }
+    public void setMonitorId(int monitorId) { this.monitorId = monitorId; }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    /** Возвращает ID модели монитора для этого заказа */
-    public int getMonitorId() {
-        return monitorId;
-    }
-
-    /** Сохраняет monitorId, поднимаемый из БД в DAO */
-    public void setMonitorId(int monitorId) {
-        this.monitorId = monitorId;
-    }
+    // геттер и сеттер для description
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 }
