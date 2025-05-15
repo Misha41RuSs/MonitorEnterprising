@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException, TelegramApiException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1019, 519);
+        Scene scene = new Scene(fxmlLoader.load(), 840, 519);
         stage.setTitle("Main");
         stage.setScene(scene);
         stage.show();

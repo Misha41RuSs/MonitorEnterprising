@@ -1,0 +1,76 @@
+/* styles.css for Client Screen */
+
+/* === Серая подложка для левой панели === */
+#leftPane {
+    -fx-background-color: #F0F0F0;   /* светло-серый фон */
+    -fx-border-color: #CCCCCC;       /* тонкая рамка */
+    -fx-border-width: 1;
+    -fx-padding: 20;                 /* внутренние отступы */
+}
+
+/* === Общие стили для всех кнопок === */
+AnchorPane .button {
+    -fx-background-radius: 8;
+    -fx-background-insets: 0;
+    -fx-padding: 10 24;               /* вертикальные и горизонтальные отступы */
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 29px;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #6A85B6 0%,
+            #BAC8E0 100%
+    );
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Ховер-эффект для всех кнопок */
+AnchorPane .button:hover {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #7A95C6 0%,
+            #CCD8F0 100%
+    );
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0, 0, 3);
+}
+
+/* Состояние при нажатии для всех кнопок */
+AnchorPane .button:armed {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #5A75A6 0%,
+            #AAB8D0 100%
+    );
+    -fx-effect: none;
+}
+
+/* === Специальный красноватый оттенок для кнопки «Выйти» === */
+/* Таргетим по тексту кнопки, если fx:id не задано */
+AnchorPane .button[text="Выйти"] {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #D46A6A 0%,
+            #E0AFAF 100%
+    );
+}
+
+/* Ховер для «Выйти» */
+AnchorPane .button[text="Выйти"]:hover {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #E06A6A 0%,
+            #F0B0B0 100%
+    );
+}
+
+/* Нажатие для «Выйти» */
+AnchorPane .button[text="Выйти"]:armed {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #C44A4A 0%,
+            #D09090 100%
+    );
+    -fx-effect: none;
+}

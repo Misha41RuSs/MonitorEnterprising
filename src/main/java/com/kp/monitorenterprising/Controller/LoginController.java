@@ -35,23 +35,73 @@ public class LoginController {
         }
 
         User user = userDAO.login(username, password);
-
         if (user == null) {
             showAlert("Ошибка", "Неверный логин или пароль.");
-        } else {
-            SessionManager.setCurrentUser(user); // ✅ сохраняем юзера
-
-            try {
-                String fxmlFile = user.getRole().equalsIgnoreCase("Администратор") ? "admin.fxml" : "client.fxml";
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/kp/monitorenterprising/" + fxmlFile));
-                Stage stage = (Stage) loginField.getScene().getWindow();
-                stage.setScene(new Scene(loader.load()));
-                stage.setTitle("Добро пожаловать, " + user.getUsername());
-            } catch (IOException e) {
-                showAlert("Ошибка", "Не удалось загрузить интерфейс.");
-                e.printStackTrace();
-            }
+            return;
         }
+
+        // Сохраняем пользователя в сессии
+        SessionManager.setCurrentUser(user);
+
+        // Определяем, какой FXML грузить и какой заголовок поставить
+        String role = user.getRole();
+        String fxmlFile;
+        String windowTitle;
+
+        switch (role) {
+            case "Администратор":
+                fxmlFile = "admin.fxml";
+                windowTitle = "Панель администратора";
+                break;
+            case "Клиент":
+                fxmlFile = "client.fxml";
+                windowTitle = "Добро пожаловать, " + user.getUsername();
+                break;
+            case "Менеджер":
+                fxmlFile = "manager.fxml";
+                windowTitle = "Менеджер: " + user.getUsername();
+                break;
+            case "Инженер":
+                fxmlFile = "engineer.fxml";
+                windowTitle = "Инженер: " + user.getUsername();
+                break;
+            case "КонтрольКачества":
+                fxmlFile = "quality.fxml";
+                windowTitle = "Контроль качества";
+                break;
+            case "Документация":
+                fxmlFile = "documentation.fxml";
+                windowTitle = "Документация";
+                break;
+            default:
+                // на всякий случай fallback
+                fxmlFile = "mainWindow.fxml";
+                windowTitle = "Главное меню";
+                break;
+        }
+
+        // Переходим на нужный экран
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/kp/monitorenterprising/" + fxmlFile)
+            );
+            Stage stage = (Stage) loginField.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle(windowTitle);
+        } catch (IOException e) {
+            showAlert("Ошибка", "Не удалось загрузить интерфейс для роли: " + role);
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/kp/monitorenterprising/mainWindow.fxml")
+        );
+        Stage stage = (Stage) loginField.getScene().getWindow();
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle("Главное меню");
     }
 
     private void showAlert(String title, String content) {
@@ -60,13 +110,5 @@ public class LoginController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
-    }
-
-    @FXML
-    void goBack(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/kp/monitorenterprising/mainWindow.fxml"));
-        Stage stage = (Stage) loginField.getScene().getWindow();
-        stage.setScene(new Scene(loader.load()));
-        stage.setTitle("Главное меню");
     }
 }

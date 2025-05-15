@@ -1,0 +1,50 @@
+/* ===== Серая подложка для левой панели ===== */
+#sidePane {
+    -fx-background-color: #F0F0F0;  /* светло-серый фон */
+    -fx-border-color: #CCCCCC;      /* опциональная тонкая рамка */
+    -fx-border-width: 1;
+    -fx-padding: 10;                /* отступы внутри */
+}
+
+/* ===== Общие стили для всех кнопок ===== */
+.button {
+    -fx-background-radius: 8;                /* скругление */
+    -fx-background-insets: 0;
+    -fx-padding: 8 20 8 20;                  /* вертикальный и горизонтальный отступ */
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 20px;
+    -fx-text-fill: white;                    /* цвет текста */
+    -fx-cursor: hand;                        /* курсор при наведении */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #6A85B6 0%,
+            #BAC8E0 100%
+    );
+    -fx-transition: all 0.3s ease;
+}
+
+/* ===== Состояние при наведении ===== */
+.button:hover {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #7A95C6 0%,
+            #CCD8F0 100%
+    );
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0, 0, 3);
+}
+
+/* ===== Состояние при нажатии ===== */
+.button:armed {
+    -fx-background-color: linear-gradient(
+            to bottom,
+            #5A75A6 0%,
+            #AAB8D0 100%
+    );
+    -fx-effect: none;
+}
+
+/* ===== Специальный класс для «Об авторе», если нужен другой стиль ===== */
+.button#aboutButton {
+    -fx-background-color: #888888;           /* более нейтральный тёмно-серый */
+}
