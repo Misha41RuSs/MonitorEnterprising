@@ -142,4 +142,42 @@ public class OrderDAO {
             return false;
         }
     }
+
+    public List<Order> getOrdersByStatus(String status) {
+        List<Order> orders = new ArrayList<>();
+        String sql = ""
+                + "SELECT o.OrderID, o.MonitorID, m.ModelName, o.Quantity, "
+                + "       o.OrderDate, (o.Quantity * m.Price) AS TotalPrice, "
+                + "       o.Status, u.Username "
+                + "FROM Orders o "
+                + "  JOIN Monitors m ON o.MonitorID = m.MonitorID "
+                + "  JOIN Users u    ON o.UserID    = u.UserID "
+                + "WHERE o.Status = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, status);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    // создаём Order старым конструктором
+                    Order order = new Order(
+                            rs.getInt("OrderID"),
+                            rs.getString("ModelName"),
+                            rs.getInt("Quantity"),
+                            rs.getDate("OrderDate").toLocalDate(),
+                            rs.getDouble("TotalPrice"),
+                            rs.getString("Status"),
+                            rs.getString("Username")
+                    );
+                    // и дополняем monitorId
+                    order.setMonitorId(rs.getInt("MonitorID"));
+                    orders.add(order);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
 }

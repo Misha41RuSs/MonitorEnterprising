@@ -9,5 +9,7 @@ module com.kp.monitorenterprising {
     exports com.kp.monitorenterprising.Controller;
 
     opens com.kp.monitorenterprising.Controller to javafx.fxml;
-    opens com.kp.monitorenterprising.model to javafx.base; // 👈 вот это добавь
+    opens com.kp.monitorenterprising.model to javafx.base;
+    exports com.kp.monitorenterprising.dao;
+    opens com.kp.monitorenterprising.dao to javafx.fxml; // 👈 вот это добавь
 }

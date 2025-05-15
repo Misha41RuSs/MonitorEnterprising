@@ -39,13 +39,13 @@
             </font>
         </Label>
 
-        <Button fx:id="ordersListButton" layoutX="366.0" layoutY="188.0" prefHeight="53.0" prefWidth="317.0" text="Список заказов">
+        <Button fx:id="ordersListButton" layoutX="366.0" layoutY="188.0" onAction="#showOrdersList" prefHeight="53.0" prefWidth="317.0" text="Список заказов">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>
         </Button>
 
-        <Button fx:id="orderMaterialsButton" layoutX="366.0" layoutY="317.0" prefHeight="53.0" prefWidth="317.0" text="Заказать материалы">
+        <Button fx:id="orderMaterialsButton" layoutX="366.0" layoutY="317.0" onAction="#orderMaterials" prefHeight="53.0" prefWidth="317.0" text="Заказать материалы">
             <font>
                 <Font name="Times New Roman" size="29.0" />
             </font>

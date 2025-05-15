@@ -22,7 +22,7 @@ public class ManagerController {
 
     @FXML
     void showOrdersList(ActionEvent event) {
-        navigateTo("ordersList.fxml", "Список заказов", event);
+        navigateTo("orderList.fxml", "Список заказов", event);
     }
 
     @FXML

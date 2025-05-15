@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ordersListPane" prefHeight="519.0" prefWidth="840.0" stylesheets="@Styles/manager.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kp.monitorenterprising.Controller.OrdersListController">
+    <children>
+        <!-- левая серая панель -->
+        <Pane fx:id="leftPane" layoutX="0" layoutY="0" prefHeight="519" prefWidth="250">
+            <children>
+                <Label layoutX="25" layoutY="14" text="Менеджер">
+                    <font><Font name="Times New Roman Bold" size="43" /></font>
+                </Label>
+                <ImageView fx:id="managerImage" fitHeight="102" fitWidth="98" layoutX="76" layoutY="91" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/Manager.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="logoutButton" layoutX="1" layoutY="420" onAction="#handleLogout" prefHeight="53" prefWidth="250" text="Выйти">
+                    <font><Font name="Times New Roman" size="29" /></font>
+                </Button>
+            </children>
+        </Pane>
+
+        <!-- заголовок + кнопка «Назад к меню менеджера» -->
+        <Label layoutX="398.0" layoutY="16.0" text="Список заказов">
+            <font><Font name="Times New Roman Bold" size="43" /></font>
+        </Label>
+        <Button fx:id="backButton" layoutX="275.0" layoutY="14.0" onAction="#goBack" prefHeight="30" prefWidth="70" text="Назад" />
+
+        <!-- таблица заказов -->
+        <TableView fx:id="ordersTable" layoutX="285.0" layoutY="70.0" prefHeight="380" prefWidth="530">
+            <columns>
+                <TableColumn fx:id="orderIdColumn" prefWidth="80" text="ID заказа" />
+                <TableColumn fx:id="userColumn" prefWidth="120" text="Пользователь" />
+                <TableColumn fx:id="modelColumn" prefWidth="150" text="Модель" />
+                <TableColumn fx:id="quantityColumn" prefWidth="70" text="Кол-во" />
+                <TableColumn fx:id="dateColumn" prefWidth="100" text="Дата" />
+                <TableColumn fx:id="statusColumn" prefWidth="110" text="Статус" />
+            </columns>
+        </TableView>
+
+        <!-- показываем детали материалов -->
+        <Button fx:id="viewMaterialsButton" layoutX="275.0" layoutY="460.0" onAction="#viewMaterials" prefHeight="53.0" prefWidth="548.0" text="Посмотреть необходимые материалы" />
+    </children>
+</AnchorPane>

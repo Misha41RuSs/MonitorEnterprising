@@ -11,14 +11,19 @@ public class Order {
     private String status;
     private String username;
 
-    public Order(int orderId, String monitorName, int quantity, LocalDate orderDate, double totalPrice, String status, String username) {
-        this.orderId = orderId;
+    // <-- добавляем это поле
+    private int monitorId;
+
+    public Order(int orderId, String monitorName, int quantity,
+                 LocalDate orderDate, double totalPrice,
+                 String status, String username) {
+        this.orderId     = orderId;
         this.monitorName = monitorName;
-        this.quantity = quantity;
-        this.orderDate = orderDate;
-        this.totalPrice = totalPrice;
-        this.status = status;
-        this.username = username;
+        this.quantity    = quantity;
+        this.orderDate   = orderDate;
+        this.totalPrice  = totalPrice;
+        this.status      = status;
+        this.username    = username;
     }
 
     public int getOrderId() {
@@ -47,5 +52,15 @@ public class Order {
 
     public String getUsername() {
         return username;
+    }
+
+    /** Возвращает ID модели монитора для этого заказа */
+    public int getMonitorId() {
+        return monitorId;
+    }
+
+    /** Сохраняет monitorId, поднимаемый из БД в DAO */
+    public void setMonitorId(int monitorId) {
+        this.monitorId = monitorId;
     }
 }
